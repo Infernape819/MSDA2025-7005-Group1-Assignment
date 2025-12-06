@@ -19,6 +19,20 @@ How well do supervised learning algorithms perform when predicting MBTI personal
 ### 3.1 Data cleaning
 The dataset we used in this study is found on kaggle. It includes 8675 entries covering all 16 personality types with the correlated online posts. This dataset is a secondary dataset. The original dataset was collected via web scraping from social media platforms, resulting in inherent noise and low data quality issues.
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Infernape819/MSDA2025-7005-Group1-Assignment/main/images/Dimension0.png" 
+       alt="维度分析图"  
+       width="800"/> 
+  <p><em>Figure 1.</em>
+</div>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Infernape819/MSDA2025-7005-Group1-Assignment/main/images/Dimension.png" 
+       alt="维度分析图" 
+       width="800"/> 
+  <p><em>Figure 2. </em></p> 
+</div>
+
 Before formally proceeding with feature processing, we confirmed the basic characteristics of the data through a pie chart (Figure 1) and bar charts (Figure 2) depicting the distribution within each personality dimension 
 
 As figure 1 and figure 2 show that ,there’s an obvious imbalance between MBTI personalities and within each dimensions. Therefore, before formally analyzing the dataset, we must prioritize using SMOTE from Python's imblearn package to oversample the minority class. This oversampling primarily involves repeatedly sampling the minority classes to ensure the model does not exhibit a preference bias for the majority class during classification. 
@@ -41,6 +55,20 @@ To optimize the model, we employed TensorFlow's “EarlyStopping” function and
 ## 4. Result and conclusion
 ### 4.1 Overall Model Performance: Traditional Models Outperform Deep Learning
 
+| Model           | Dimension | Accuracy | Minority Class | Minority Class | Key Insight                                  |
+|-----------------|-----------|----------|----------------|----------------|----------------------------------------------|
+| LR (SMOTE)      | I/E       | 0.85     | 0.68           | 0.69           | Highest F1 for I/E, high recall.             |
+| XGBoost (SMOTE) | I/E       | 0.85     | 0.63           | 0.55           | Highest Accuracy, but lowest recall.         |
+| Hybrid DL       | I/E       | 0.69     | 0.45           | 0.57           | Weakest performance in this dimension.       |
+| LR (SMOTE)      | N/S       | 0.89     | 0.63           | 0.68           | Highest F1 and recall for N/S.               |
+| XGBoost (SMOTE) | N/S       | 0.90     | 0.54           | 0.42           | Highest Accuracy, but lowest recall.         |
+| Hybrid DL       | N/S       | 0.78     | 0.36           | 0.44           | Weakest performance overall.                 |
+| LR (SMOTE)      | F/T       | 0.86     | 0.85           | 0.88           | Highest F1 and recall for F/T, most balanced.|
+| XGBoost (SMOTE) | F/T       | 0.86     | 0.84           | 0.86           | Excellent performance, close to LR.          |
+| Hybrid DL       | F/T       | 0.72     | 0.70           | 0.73           | Best-performing DL dimension.                |
+| LR (SMOTE)      | J/P       | 0.81     | 0.74           | 0.72           | Highest F1 for J/P, high recall.             |
+| XGBoost (SMOTE) | J/P       | 0.81     | 0.73           | 0.68           | Highest Accuracy, but lowest recall.         |
+| Hybrid DL       | J/P       | 0.62     | 0.57           | 0.67           | Lowest Accuracy and F1.                      |
 #### 4.1.1 Logistic Regression (LR): The Best Balance and Robustness
 
 The LR (SMOTE) model achieved the highest Minority Class F1-Score and highest Recall across all four dimensions (I/E, N/S, F/T, J/P).
