@@ -88,19 +88,20 @@ Traditional deep learning architectures (LSTM/CNN with Attention) failed to extr
 ### 4.2 Final Assessment of Dimension Prediction Difficulty
 Based on the LR (SMOTE) F1-Scores (the most stable and balanced metric):
 
-1. F/T (Feeling/Thinking) is the Easiest to Predict: This dimension consistently showed the best performance, indicating that the differences in emotional vs. logical language patterns are the most distinguishable.
+F/T (Feeling/Thinking) is the Easiest to Predict. This dimension consistently showed the best performance, indicating that the differences in emotional vs. logical language patterns are the most distinguishable.
 
-2. N/S (Intuition/Sensing) is the Most Challenging: N/S remains the dimension with the lowest performance (F1 $\approx 0.63$) across all models. This confirms that the language expressing this dichotomy (abstract vs. concrete perception) is the most subtle and difficult to model using text features.
+2. N/S (Intuition/Sensing) is the Most Challenging. N/S remains the dimension with the lowest performance (F1 $\approx 0.63$) across all models. This confirms that the language expressing this dichotomy (abstract vs. concrete perception) is the most subtle and difficult to model using text features.
 
 ## 5. Limitations Analysis
 
-1. Feature Representation Bottleneck:The high performance of LR and XGBoost relies heavily on TF-IDF. While this is the foundation of their success, it also defines their performance ceiling. To overcome the limitations in dimensions like N/S, introducing semantic features from modern, large-scale language models (e.g., fine-tuning BERT) is necessary.
-   
-3. Persistent Class Imbalance Trade-off:Although SMOTE improved minority class metrics, the models still force a trade-off between high Recall (favored by LR) and high Precision (favored by XGBoost). The inability of any model to achieve both simultaneously suggests that the inherent difficulty of the data distribution (class imbalance) remains a core challenge.
-   
-3. Inherent Discrepancy in Predictive Difficulty: The vast differences in F1-Scores across the four dimensions (from 0.85 to 0.63) are an intrinsic limitation of the task. It suggests that MBTI traits have differing levels of linguistic manifestation on social media. Traits like N/S are expressed in complex or subtle ways that are difficult to capture with current features.
-  
-4. Model Explainability: The LR model offers good interpretability (via coefficient weights). In contrast, the high-performing XGBoost (tree-based) and the Hybrid DL Model (black-box) have complex decision processes that are difficult to interpret. This is a drawback for a personality prediction task where behavior attribution analysis is often required.
+The current methodology for personality prediction faces several core challenges. First, there is a bottleneck in feature representation: the high performance of Logistic Regression (LR) and XGBoost relies heavily on TF-IDF features, which, while foundational to their success, also establishes their performance ceiling. To overcome representational limitations in certain dimensions (e.g., N/S), it is necessary to integrate semantic features derived from modern large-scale language models, such as a fine-tuned BERT. 
+
+Second, a persistent class imbalance forces a model trade-off: although SMOTE improved metrics for the minority class, models still must choose between high recall (favored by LR) and high precision (favored by XGBoost). The inability of any single model to achieve both simultaneously indicates that the inherent class imbalance within the data distribution remains a fundamental challenge. 
+
+Third, an inherent discrepancy exists in predictive difficulty across traits: the significant variation in F1-scores across the four dimensions (ranging from 0.85 to 0.63) reflects an intrinsic property of the task itself. This suggests that MBTI traits vary in their degree of linguistic manifestation on social media, with traits such as N/S being expressed in complex or subtle ways that are not easily captured by the current feature set. 
+
+Finally, model explainability is a key consideration: while LR offers good interpretability via coefficient weights, the decision processes of the higher-performing XGBoost (a tree-based model) and the hybrid deep learning model (a black-box system) are complex and difficult to interpret. This lack of transparency is a notable drawback for a personality prediction task, where behavioral attribution analysis is often required.
+
 
 
 
