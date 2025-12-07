@@ -90,7 +90,7 @@ Based on the LR (SMOTE) F1-Scores (the most stable and balanced metric):
 
 F/T (Feeling/Thinking) is the Easiest to Predict. This dimension consistently showed the best performance, indicating that the differences in emotional vs. logical language patterns are the most distinguishable.
 
-2. N/S (Intuition/Sensing) is the Most Challenging. N/S remains the dimension with the lowest performance (F1 $\approx 0.63$) across all models. This confirms that the language expressing this dichotomy (abstract vs. concrete perception) is the most subtle and difficult to model using text features.
+N/S (Intuition/Sensing) is the Most Challenging. N/S remains the dimension with the lowest performance (F1 $\approx 0.63$) across all models. This confirms that the language expressing this dichotomy (abstract vs. concrete perception) is the most subtle and difficult to model using text features.
 
 ## 5. Limitations Analysis
 
