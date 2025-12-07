@@ -82,8 +82,6 @@ XGBoost achieved the highest overall accuracy in the I/E and N/S dimensions.This
 #### 4.1.3 Hybrid DL Model: The Clear Underperformer
 
 The Hybrid DL Model demonstrated the lowest accuracy and F1-Score across all four dimensions.
-
-#### 4.1.4 Conclusion
 Traditional deep learning architectures (LSTM/CNN with Attention) failed to extract more valuable, stable semantic information than the TF-IDF features used by the traditional models. Without incorporating large-scale pre-trained word vectors (like BERT), deep learning does not provide a clear advantage over optimized classical machine learning methods for this noisy, text-based personality prediction task.
 
 
